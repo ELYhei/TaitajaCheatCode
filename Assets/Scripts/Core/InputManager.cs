@@ -44,11 +44,10 @@ namespace ELY.Core
 
         public event EventHandler OnInteractionHolded; // X, E
         public event EventHandler OnInteractionClicked; // X, E
-        public event EventHandler OnReloadHolded; // X, R
-        public event EventHandler OnWeaponDropClicked;
         public event EventHandler OnInventoryToggle;
         public event EventHandler OnAcceptClicked;
         public event EventHandler OnCancelClicked;
+        public event EventHandler OnJumpClicked;
         public event EventHandler<OnArrowClickedEventArgs> OnArrowClicked;
         public class OnArrowClickedEventArgs : EventArgs
         {
@@ -71,8 +70,7 @@ namespace ELY.Core
         public bool shootPressed { get { return playerInputActions.WeaponHandling.Shoot.IsPressed() && WeaponHandlingInputsActive; } }
 
         private float interactHoldTime = 0.35f;
-        private float reloadHoldTime = 0.2f;
-
+        bool hasJumpPressed = false;
         public bool WeaponHandlingInputsActive { get; set; } = true;
         public bool PlayerMovementInputsActive { get; set; } = true;
         public bool InventoryInputsActive { get; set; } = true;
@@ -122,6 +120,22 @@ namespace ELY.Core
             playerInputActions.Enable();
         }
 
+        private void Update()
+        {
+            if (jumpPressed)
+                HandleJumpPress();
+            else
+                hasJumpPressed = false;
+        }
+
+        private void HandleJumpPress()
+        {
+            if (!hasJumpPressed)
+            {
+                OnJumpClicked?.Invoke(this, EventArgs.Empty);
+                hasJumpPressed = true;
+            }
+        }
         private void InputManager_performed(InputAction.CallbackContext obj)
         {
             usingDevice = obj.action.activeControl.device;

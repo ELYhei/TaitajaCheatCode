@@ -44,7 +44,6 @@ namespace ELY.Core
 
         public event EventHandler OnInteractionHolded; // X, E
         public event EventHandler OnInteractionClicked; // X, E
-        public event EventHandler OnInventoryToggle;
         public event EventHandler OnAcceptClicked;
         public event EventHandler OnCancelClicked;
         public event EventHandler OnJumpClicked;

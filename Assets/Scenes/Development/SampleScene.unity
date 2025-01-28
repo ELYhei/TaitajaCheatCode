@@ -253,42 +253,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!1 &156467703
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 156467704}
-  m_Layer: 0
-  m_Name: GroundCheck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &156467704
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 156467703}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 418444268}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &418444268 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1236998345238396352, guid: 3ec98e4abe85b2c4c9963d78bf5670ae, type: 3}
-  m_PrefabInstance: {fileID: 8084795955819961079}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,6 +590,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &950720246 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 8149904853139967578, guid: 3ec98e4abe85b2c4c9963d78bf5670ae, type: 3}
+  m_PrefabInstance: {fileID: 8084795955819961079}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &995338882
 GameObject:
   m_ObjectHideFlags: 8
@@ -991,48 +960,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5034799292599460089, guid: 3ec98e4abe85b2c4c9963d78bf5670ae, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8149904853139967578, guid: 3ec98e4abe85b2c4c9963d78bf5670ae, type: 3}
-      propertyPath: m_Mass
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 8149904853139967578, guid: 3ec98e4abe85b2c4c9963d78bf5670ae, type: 3}
-      propertyPath: m_Material
+    - target: {fileID: 8981360246314130873, guid: 3ec98e4abe85b2c4c9963d78bf5670ae, type: 3}
+      propertyPath: rb
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8149904853139967578, guid: 3ec98e4abe85b2c4c9963d78bf5670ae, type: 3}
-      propertyPath: m_Constraints
+      objectReference: {fileID: 950720246}
+    - target: {fileID: 8981360246314130873, guid: 3ec98e4abe85b2c4c9963d78bf5670ae, type: 3}
+      propertyPath: staminaGain
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 8149904853139967578, guid: 3ec98e4abe85b2c4c9963d78bf5670ae, type: 3}
-      propertyPath: m_Interpolate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8149904853139967578, guid: 3ec98e4abe85b2c4c9963d78bf5670ae, type: 3}
-      propertyPath: m_LinearDamping
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8981360246314130873, guid: 3ec98e4abe85b2c4c9963d78bf5670ae, type: 3}
-      propertyPath: jumpForce
-      value: 450
-      objectReference: {fileID: 0}
-    - target: {fileID: 8981360246314130873, guid: 3ec98e4abe85b2c4c9963d78bf5670ae, type: 3}
-      propertyPath: groundCheck
-      value: 
-      objectReference: {fileID: 156467704}
-    - target: {fileID: 8981360246314130873, guid: 3ec98e4abe85b2c4c9963d78bf5670ae, type: 3}
-      propertyPath: groundLayer.m_Bits
-      value: 1
+      propertyPath: staminaDrain
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 1236998345238396352, guid: 3ec98e4abe85b2c4c9963d78bf5670ae, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 156467704}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ec98e4abe85b2c4c9963d78bf5670ae, type: 3}
 --- !u!1660057539 &9223372036854775807

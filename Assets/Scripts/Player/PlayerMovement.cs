@@ -11,6 +11,7 @@ namespace ELY.PlayerCore
         #region EVENTS
         //[Header("Events")]
         public event EventHandler OnJump;
+        public event EventHandler OnLand;
         #endregion
 
         #region DEBUG
@@ -48,12 +49,26 @@ namespace ELY.PlayerCore
         public Vector2 velocity { get { return rb.linearVelocity; } }
         private bool hasStamina { get { return stamina > 0; } }
         public bool isRunning { get; private set; }
-        public bool isMoving { get { return rb.linearVelocity.x > 0.1f; } }
+        public bool isMoving { get { return Mathf.Abs(rb.linearVelocity.x) > 0.1f; } }
+        bool IsGrounded = false;
         public bool isGrounded
         {
             get
             {
-                return Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+                if (Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer))
+                {
+                    if (!IsGrounded)
+                    {
+                        OnLand?.Invoke(this, EventArgs.Empty);
+                    }
+                    IsGrounded = true;
+                }
+                else
+                {
+                    IsGrounded = false;
+                }
+                
+                return IsGrounded;
             }
         }
         #endregion
@@ -85,7 +100,7 @@ namespace ELY.PlayerCore
         #region MOVEMENT LOGIC
         private void HandleHorizontalMovement()
         {
-            float horizontalInput = InputManager.Instance.movementInput.x;
+            float horizontalInput = InputManager.Instance.movementInput.normalized.x;
             rb.linearVelocity = new Vector2(horizontalInput * speed, rb.linearVelocityY);
         }
         

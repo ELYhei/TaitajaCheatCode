@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: bc2b35bac3ccece4fbc77c9f4ee5850a
+guid: 8bed7ff25df7dbf4aa9850470f95e8b0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4455773685664611252
-    second: UtilsIcon_0
+      213: 7216141054156907085
+    second: SoundManagerIconYellow_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 50
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -126,12 +126,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UtilsIcon_0
+      name: SoundManagerIconYellow_0
       rect:
         serializedVersion: 2
-        x: 16
+        x: 99
         y: 0
-        width: 480
+        width: 314
         height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c448d6ac079e922c0800000000000000
-      internalID: -4455773685664611252
+      spriteID: d42a2265e02e42460800000000000000
+      internalID: 7216141054156907085
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      UtilsIcon_0: -4455773685664611252
+      SoundManagerIconYellow_0: 7216141054156907085
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

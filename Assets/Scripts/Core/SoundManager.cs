@@ -131,13 +131,13 @@ namespace ELY.Core
                 oneShotAudioSource.clip = audioClip;
                 oneShotAudioSource.Play();
                 Instance.AddPlayingSound(oneShotAudioSource, sound);
+                Destroy(oneShotGameObject, audioClip.length);
             }
             else
             {
                 Debug.LogError($"AudioClip for sound: {sound} is null");
                 Destroy(oneShotGameObject);
             }
-            Destroy(oneShotAudioSource, audioClip.length);
         }
         public static void PlaySoundRandom(Sound sound, Vector3 position, float volume = 1f)
         {
@@ -169,13 +169,13 @@ namespace ELY.Core
                 oneShotAudioSource.clip = audioClip;
                 oneShotAudioSource.Play();
                 Instance.AddPlayingSound(oneShotAudioSource, sound);
+                Destroy(oneShotGameObject, audioClip.length);
             }
             else
             {
                 Debug.LogError($"AudioClip for sound: {sound} is null");
                 Destroy(oneShotGameObject);
             }
-            Destroy(oneShotAudioSource, audioClip.length);
         }
         public static bool IsSoundPlaying(Sound sound)
         {
@@ -211,6 +211,7 @@ namespace ELY.Core
                 oneShotAudioSource.clip = audioClip;
                 oneShotAudioSource.Play();
                 Instance.AddPlayingSound(oneShotAudioSource, sound);
+                Destroy(oneShotGameObject, audioClip.length);
             }
             else
             {
@@ -277,13 +278,14 @@ namespace ELY.Core
                 oneShotAudioSource.clip = audioClip;
                 oneShotAudioSource.Play();
                 Instance.AddPlayingSound(oneShotAudioSource, sound);
+                Destroy(oneShotGameObject, audioClip.length);
             }
             else
             {
                 Debug.LogError($"AudioClip for sound: {sound} is null");
                 Destroy(oneShotGameObject);
             }
-            Destroy(oneShotAudioSource, audioClip.length);
+
         }
         public static void PlaySoundWithCooldown(Sound sound, float cooldown, float volume = 1f)
         {

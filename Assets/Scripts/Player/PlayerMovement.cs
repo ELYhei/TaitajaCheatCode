@@ -1,24 +1,34 @@
 using UnityEngine;
 using ELY.Core;
 using NaughtyAttributes;
+using System;
 
 namespace ELY.PlayerCore
 {
     public class PlayerMovement : MonoBehaviour
     {
 
+        #region EVENTS
+        //[Header("Events")]
+        public event EventHandler OnJump;
+        #endregion
+
+        #region DEBUG
         [Header("Properties")]
         [ProgressBar("Stamina", 100f, EColor.Blue)]
         [SerializeField] float stamina;
         [SerializeField] float speed;
-
         [Space(15f)]
+        #endregion
 
+        #region REFERENCES
         [Header("References")]
         [SerializeField] Rigidbody2D rb;
         [SerializeField] Transform groundCheck;
         [SerializeField] LayerMask groundLayer;
+        #endregion
 
+        #region SETTINGS
         [Header("Settings")]
         [SerializeField] float walkingSpeed = 4f;
         [SerializeField] float runningSpeed = 7f;
@@ -32,8 +42,10 @@ namespace ELY.PlayerCore
         [SerializeField] float staminaGain = 2f;
         [Tooltip("If stamina is less than this can not sprint")]
         [SerializeField] float minimunStaminaToSprint = 10f;
+        #endregion
 
-
+        #region PROPERTIES
+        public Vector2 velocity { get { return rb.linearVelocity; } }
         private bool hasStamina { get { return stamina > 0; } }
         public bool isRunning { get; private set; }
         public bool isMoving { get { return rb.linearVelocity.x > 0.1f; } }
@@ -44,7 +56,8 @@ namespace ELY.PlayerCore
                 return Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
             }
         }
-
+        #endregion
+        
         private void Start()
         {
             if (rb == null)
@@ -56,7 +69,10 @@ namespace ELY.PlayerCore
 
         private void Instance_OnJumpClicked(object sender, System.EventArgs e)
         {
-            Jump();
+            if (isGrounded)
+            {
+                Jump();
+            }
         }
 
         private void Update()
@@ -66,30 +82,47 @@ namespace ELY.PlayerCore
             UpdateStamina();
         }
 
+        #region MOVEMENT LOGIC
+        private void HandleHorizontalMovement()
+        {
+            float horizontalInput = InputManager.Instance.movementInput.x;
+            rb.linearVelocity = new Vector2(horizontalInput * speed, rb.linearVelocityY);
+        }
+        
         private void HandleSprinting()
         {
-            if (InputManager.Instance.sprintPressed && hasStamina)
+            if (!InputManager.Instance.sprintPressed || !hasStamina)
             {
-                // Dont start running if not grounded
-                if (!isRunning && !isGrounded)
-                {
-                    speed = walkingSpeed;
-                    return;
-                }
-                // Dont start running if stamina is less than minimum stamina needed
-                if (!isRunning && stamina < minimunStaminaToSprint)
-                {
-                    speed = walkingSpeed;
-                    return;
-                }
-                speed = runningSpeed;
-                isRunning = true;
+                StopRunning();
+                return;
             }
-            else
+
+            // Prevent sprinting if not grounded or stamina is too low
+            if (!isRunning && (!isGrounded || stamina < minimunStaminaToSprint))
             {
-                speed = walkingSpeed;
-                isRunning = false;
+                StopRunning();
+                return;
             }
+
+            StartRunning();
+        }
+        
+        private void Jump()
+        {
+            OnJump?.Invoke(this, EventArgs.Empty);
+            rb.AddForceY(jumpForce, ForceMode2D.Impulse);
+        }
+        
+        private void StartRunning()
+        {
+            speed = runningSpeed;
+            isRunning = true;
+        }
+
+        private void StopRunning()
+        {
+            speed = walkingSpeed;
+            isRunning = false;
         }
 
         void UpdateStamina()
@@ -103,19 +136,7 @@ namespace ELY.PlayerCore
                 stamina += staminaGain * Time.deltaTime;
             }
         }
-
-        private void HandleHorizontalMovement()
-        {
-            float horizontalInput = InputManager.Instance.movementInput.x;
-            rb.linearVelocity = new Vector2(horizontalInput * speed, rb.linearVelocityY);
-        }
-
-        private void Jump()
-        {
-            if (isGrounded)
-            {
-                rb.AddForceY(jumpForce, ForceMode2D.Impulse);
-            }
-        }
+        #endregion
+    
     }
 }

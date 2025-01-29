@@ -1,15 +1,15 @@
 fileFormatVersion: 2
-guid: a3c27b3edc7c7dd49aa745bbedc2eed1
+guid: 4f6fccd708afd8446b750eec3e30188d
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 0
+  mainObjectFileID: 9100000
   userData: 
   assetBundleName: 
   assetBundleVariant: 
 AssetOrigin:
   serializedVersion: 1
-  productId: 166731
-  packageName: Metroidvania Controller
-  packageVersion: 1.2
-  assetPath: Assets/MetroidvaniaController/Animation/Player/DrawCharacter.controller
-  uploadId: 398611
+  productId: 170422
+  packageName: Martial Hero
+  packageVersion: 1.0
+  assetPath: Assets/Martial Hero/Animations/Martial Hero.controller
+  uploadId: 372436

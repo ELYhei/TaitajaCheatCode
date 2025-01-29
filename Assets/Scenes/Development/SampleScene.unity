@@ -590,11 +590,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &950720246 stripped
-Rigidbody2D:
-  m_CorrespondingSourceObject: {fileID: 8149904853139967578, guid: 3ec98e4abe85b2c4c9963d78bf5670ae, type: 3}
-  m_PrefabInstance: {fileID: 8084795955819961079}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &995338882
 GameObject:
   m_ObjectHideFlags: 8
@@ -922,7 +917,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1236998345238396352, guid: 3ec98e4abe85b2c4c9963d78bf5670ae, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.894
       objectReference: {fileID: 0}
     - target: {fileID: 1236998345238396352, guid: 3ec98e4abe85b2c4c9963d78bf5670ae, type: 3}
       propertyPath: m_LocalPosition.z
@@ -959,18 +954,6 @@ PrefabInstance:
     - target: {fileID: 5034799292599460089, guid: 3ec98e4abe85b2c4c9963d78bf5670ae, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8981360246314130873, guid: 3ec98e4abe85b2c4c9963d78bf5670ae, type: 3}
-      propertyPath: rb
-      value: 
-      objectReference: {fileID: 950720246}
-    - target: {fileID: 8981360246314130873, guid: 3ec98e4abe85b2c4c9963d78bf5670ae, type: 3}
-      propertyPath: staminaGain
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8981360246314130873, guid: 3ec98e4abe85b2c4c9963d78bf5670ae, type: 3}
-      propertyPath: staminaDrain
-      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -1441,6 +1441,14 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 519420033}
+    - target: {fileID: 8149904853139967578, guid: 3ec98e4abe85b2c4c9963d78bf5670ae, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 9be81930a6d7c97468db3714b650871c, type: 2}
+    - target: {fileID: 8981360246314130873, guid: 3ec98e4abe85b2c4c9963d78bf5670ae, type: 3}
+      propertyPath: wallJumpTime
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

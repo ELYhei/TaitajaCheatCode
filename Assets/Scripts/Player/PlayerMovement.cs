@@ -42,7 +42,7 @@ namespace ELY.PlayerCore
         [SerializeField] float groundCheckRadius = 0.3f;
         [Header("Wall Jump")]
         [SerializeField] float wallJumpForce = 550f;
-        [SerializeField] float wallJumpTime = 1f; // Disables Movement For This Time
+        [SerializeField] float wallJumpTime = 0.5f; // Disables Movement For This Time
         [SerializeField] float wallCheckRadius = 0.4f;
         [Header("Stamina")]
         [SerializeField] float maxStamina = 100f;
@@ -151,14 +151,16 @@ namespace ELY.PlayerCore
             if (Physics2D.OverlapCircle(wallCheck.position, wallCheckRadius, wallLayer))
             {
                 OnWallJump?.Invoke(this, EventArgs.Empty);
-                StartCoroutine(PauseMovement());
-                rb.linearVelocity = Vector2.zero;
+                PauseMovement();
+                rb.linearVelocity = Vector2.zero;  // Zero out only the velocity to avoid undesired angular effects
                 isRunning = false;
-                rb.AddForce(-transform.right * wallJumpForce, ForceMode2D.Impulse);
-                rb.AddForceY(wallJumpForce, ForceMode2D.Impulse);
+                
+                // Apply force in opposite direction of wall with both X and Y components
+                rb.AddForce(-transform.right * wallJumpForce, ForceMode2D.Impulse); 
+                rb.AddForce(Vector2.up * wallJumpForce, ForceMode2D.Impulse); // Apply Y component directly
             }
         }
-        
+       
         private void StartRunning()
         {
             speed = runningSpeed;
@@ -171,11 +173,20 @@ namespace ELY.PlayerCore
             isRunning = false;
         }
         
-        IEnumerator PauseMovement()
+        private Coroutine pauseMovementCoroutine;
+        IEnumerator PauseMovementCoroutine()
         {
             movementEnabled = false;
             yield return new WaitForSeconds(wallJumpTime);
             movementEnabled = true;
+        }
+
+        private void PauseMovement()
+        {
+            if (pauseMovementCoroutine != null)
+                StopCoroutine(pauseMovementCoroutine);
+
+            pauseMovementCoroutine = StartCoroutine(PauseMovementCoroutine());
         }
 
         void UpdateStamina()

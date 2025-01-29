@@ -32,8 +32,8 @@ namespace ELY
 
         private void Update()
         {
-            if (movementController.velocity.x < 0) movementController.FlipX(false);
-            else if (movementController.velocity.x > 0) movementController.FlipX(true);
+            if (movementController.velocity.x < -0.1) movementController.FlipX(false);
+            else if (movementController.velocity.x > 0.1) movementController.FlipX(true);
             animator.SetBool(groundedBool, movementController.isGrounded);
             animator.SetFloat(xVelo, Mathf.Abs(movementController.velocity.x));
             animator.SetFloat(yVelo, movementController.velocity.y);

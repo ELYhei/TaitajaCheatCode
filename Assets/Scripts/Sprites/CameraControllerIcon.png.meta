@@ -1,10 +1,22 @@
 fileFormatVersion: 2
-guid: 80f9be851eeb4af41b96aa8aa9579b86
+guid: e93bede5f55613f45a0444605495e236
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8867293713916844121
-    second: AnimationControllerIcon_0
+      213: -3236344282512552135
+    second: CameraControllerIcon_0
+  - first:
+      213: -8206195187022729466
+    second: CameraControllerIcon_1
+  - first:
+      213: -4412926515710238697
+    second: CameraControllerIcon_2
+  - first:
+      213: 4974781703021969192
+    second: CameraControllerIcon_3
+  - first:
+      213: -5873363135166059508
+    second: CameraControllerIcon_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +138,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AnimationControllerIcon_0
+      name: CameraControllerIcon_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 63
-        width: 482
-        height: 386
+        x: 66
+        y: 148
+        width: 68
+        height: 43
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +153,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9585111e6a4fe0b70800000000000000
-      internalID: 8867293713916844121
+      spriteID: 93f09fd95023613d0800000000000000
+      internalID: -3236344282512552135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CameraControllerIcon_1
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 66
+        width: 43
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60f6df7a4fcbd1e80800000000000000
+      internalID: -8206195187022729466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CameraControllerIcon_2
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 62
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7106033f6b222c2c0800000000000000
+      internalID: -4412926515710238697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CameraControllerIcon_3
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 66
+        width: 43
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82fbcb3f999f90540800000000000000
+      internalID: 4974781703021969192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CameraControllerIcon_4
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 9
+        width: 68
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0c6d83d85f9d7ea0800000000000000
+      internalID: -5873363135166059508
       vertices: []
       indices: 
       edges: []
@@ -161,7 +261,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      AnimationControllerIcon_0: 8867293713916844121
+      CameraControllerIcon_0: -3236344282512552135
+      CameraControllerIcon_1: -8206195187022729466
+      CameraControllerIcon_2: -4412926515710238697
+      CameraControllerIcon_3: 4974781703021969192
+      CameraControllerIcon_4: -5873363135166059508
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

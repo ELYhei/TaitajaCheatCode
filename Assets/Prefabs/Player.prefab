@@ -166,6 +166,7 @@ GameObject:
   - component: {fileID: 6329649817468935250}
   - component: {fileID: 8981360246314130873}
   - component: {fileID: 4595834083104027460}
+  - component: {fileID: 5957576631597971819}
   - component: {fileID: 8149904853139967578}
   - component: {fileID: 8198424932754821150}
   m_Layer: 6
@@ -218,7 +219,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stamina: 0
-  speed: 0
   rb: {fileID: 8149904853139967578}
   groundCheck: {fileID: 3086666405898760675}
   wallCheck: {fileID: 4131609272674026676}
@@ -254,6 +254,24 @@ MonoBehaviour:
   playerMovement: {fileID: 8981360246314130873}
   walkingStepDelay: 0.425
   runningStepDelay: 0.25
+--- !u!114 &5957576631597971819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5034799292599460089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c395825d21bad048bc2a301f4fec5ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  playerMovement: {fileID: 8981360246314130873}
+  landShakeType: 0
+  landShakeDuration: 0.1
+  wallJumpShakeType: 2
+  wallJumpShakeDuration: 0.1
 --- !u!50 &8149904853139967578
 Rigidbody2D:
   serializedVersion: 5

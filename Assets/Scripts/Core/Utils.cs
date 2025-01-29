@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace ELY
@@ -77,6 +78,38 @@ namespace ELY
         {
             return 1 << gameObject.layer;
         }
+
+        private static Dictionary<Action, float> cooldowns = new Dictionary<Action, float>();
+        public static void CallFunctionWithCooldown(Action function, float cooldownInSeconds)
+        {
+            float currentTime = Time.time;
+
+            // Cleanup old entries
+            List<Action> keysToRemove = new List<Action>();
+            foreach (var entry in cooldowns)
+            {
+                if (currentTime - entry.Value > cooldownInSeconds * 2) // Arbitrary threshold for cleanup
+                {
+                    keysToRemove.Add(entry.Key);
+                }
+            }
+            foreach (var key in keysToRemove)
+            {
+                cooldowns.Remove(key);
+            }
+
+            // Check cooldown and execute function
+            if (cooldowns.TryGetValue(function, out float lastCallTime))
+            {
+                if (currentTime - lastCallTime < cooldownInSeconds)
+                {
+                    return;
+                }
+            }
+
+            function.Invoke();
+            cooldowns[function] = currentTime;
+        }        
 
         public static void LookTowardsHorizontal(GameObject gameObject, Vector3 targetLookPosition)
         {

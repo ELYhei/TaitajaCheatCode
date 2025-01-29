@@ -11,5 +11,6 @@ namespace ELY.PlayerCore
             if (Instance == null) Instance = this;
             else if (Instance != this) Destroy(gameObject);
         }
+
     }
 }

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 80f9be851eeb4af41b96aa8aa9579b86
+guid: 5c78682d6f9290341be2505c5b7f2667
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8867293713916844121
-    second: AnimationControllerIcon_0
+      213: 7176465225533842991
+    second: ELYCamIcon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AnimationControllerIcon_0
+      name: ELYCamIcon_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 63
-        width: 482
-        height: 386
+        x: 0
+        y: 40
+        width: 512
+        height: 432
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9585111e6a4fe0b70800000000000000
-      internalID: 8867293713916844121
+      spriteID: f2663ee991de79360800000000000000
+      internalID: 7176465225533842991
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      AnimationControllerIcon_0: 8867293713916844121
+      ELYCamIcon_0: 7176465225533842991
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

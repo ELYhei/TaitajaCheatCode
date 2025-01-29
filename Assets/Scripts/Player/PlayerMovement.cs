@@ -2,6 +2,7 @@ using UnityEngine;
 using ELY.Core;
 using NaughtyAttributes;
 using System;
+using System.Collections;
 
 namespace ELY.PlayerCore
 {
@@ -14,11 +15,11 @@ namespace ELY.PlayerCore
         public event EventHandler OnLand;
         #endregion
 
-        #region DEBUG
+        #region DEBUG & PROPERTIES
         [Header("Properties")]
         [ProgressBar("Stamina", 100f, EColor.Blue)]
         [SerializeField] float stamina;
-        [SerializeField] float speed;
+        float speed;
         [Space(15f)]
         #endregion
 
@@ -26,21 +27,28 @@ namespace ELY.PlayerCore
         [Header("References")]
         [SerializeField] Rigidbody2D rb;
         [SerializeField] Transform groundCheck;
+        [SerializeField] Transform wallCheck;
         [SerializeField] LayerMask groundLayer;
+        [SerializeField] LayerMask wallLayer;
         #endregion
 
         #region SETTINGS
         [Header("Settings")]
         [SerializeField] float walkingSpeed = 4f;
         [SerializeField] float runningSpeed = 7f;
+        [Header("Jump")]
         [SerializeField] float jumpForce = 400f;
-        [SerializeField] float groundCheckRadius = 0.4f;
+        [SerializeField] float groundCheckRadius = 0.3f;
+        [Header("Wall Jump")]
+        [SerializeField] float wallJumpForce = 550f;
+        [SerializeField] float wallJumpTime = 1f; // Disables Movement For This Time
+        [SerializeField] float wallCheckRadius = 0.4f;
         [Header("Stamina")]
         [SerializeField] float maxStamina = 100f;
         [Tooltip("drain stamina in a second")]
-        [SerializeField] float staminaDrain = 3f;
+        [SerializeField] float staminaDrain = 7f;
         [Tooltip("gain stamina in a second")]
-        [SerializeField] float staminaGain = 2f;
+        [SerializeField] float staminaGain = 4f;
         [Tooltip("If stamina is less than this can not sprint")]
         [SerializeField] float minimunStaminaToSprint = 10f;
         #endregion
@@ -50,6 +58,7 @@ namespace ELY.PlayerCore
         private bool hasStamina { get { return stamina > 0; } }
         public bool isRunning { get; private set; }
         public bool isMoving { get { return Mathf.Abs(rb.linearVelocity.x) > 0.1f; } }
+
         bool IsGrounded = false;
         public bool isGrounded
         {
@@ -71,6 +80,8 @@ namespace ELY.PlayerCore
                 return IsGrounded;
             }
         }
+        
+        private bool movementEnabled = true;
         #endregion
         
         private void Start()
@@ -88,10 +99,16 @@ namespace ELY.PlayerCore
             {
                 Jump();
             }
+            else
+            {
+                TryWallJump();
+            }
         }
 
         private void Update()
         {
+            if (!movementEnabled) return;
+
             HandleHorizontalMovement();
             HandleSprinting();
             UpdateStamina();
@@ -128,6 +145,18 @@ namespace ELY.PlayerCore
             rb.AddForceY(jumpForce, ForceMode2D.Impulse);
         }
         
+        private void TryWallJump()
+        {
+            if (Physics2D.OverlapCircle(wallCheck.position, wallCheckRadius, wallLayer))
+            {
+                StartCoroutine(PauseMovement());
+                rb.linearVelocity = Vector2.zero;
+                isRunning = false;
+                rb.AddForce(-transform.right * wallJumpForce, ForceMode2D.Impulse);
+                rb.AddForceY(wallJumpForce, ForceMode2D.Impulse);
+            }
+        }
+        
         private void StartRunning()
         {
             speed = runningSpeed;
@@ -139,10 +168,17 @@ namespace ELY.PlayerCore
             speed = walkingSpeed;
             isRunning = false;
         }
+        
+        IEnumerator PauseMovement()
+        {
+            movementEnabled = false;
+            yield return new WaitForSeconds(wallJumpTime);
+            movementEnabled = true;
+        }
 
         void UpdateStamina()
         {
-            if (isRunning)
+            if (isRunning && isMoving)
             {
                 stamina -= staminaDrain * Time.deltaTime;
             }
@@ -151,7 +187,21 @@ namespace ELY.PlayerCore
                 stamina += staminaGain * Time.deltaTime;
             }
         }
+        
+        public void FlipX(bool lookRight)
+        {
+            if (lookRight)
+            {
+                transform.rotation = Quaternion.Euler(transform.rotation.x, 0f, transform.rotation.z);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(transform.rotation.x, 180f, transform.rotation.z);
+            }
+        }
+        
         #endregion
-    
+
+
     }
 }

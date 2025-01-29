@@ -190,6 +190,7 @@ Transform:
   m_Children:
   - {fileID: 6857876100725105761}
   - {fileID: 3086666405898760675}
+  - {fileID: 4131609272674026676}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6329649817468935250
@@ -220,13 +221,20 @@ MonoBehaviour:
   speed: 0
   rb: {fileID: 8149904853139967578}
   groundCheck: {fileID: 3086666405898760675}
+  wallCheck: {fileID: 4131609272674026676}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 129
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 128
   walkingSpeed: 4
   runningSpeed: 7
   jumpForce: 400
-  groundCheckRadius: 0.4
+  groundCheckRadius: 0.3
+  wallJumpForce: 550
+  wallJumpTime: 1
+  wallCheckRadius: 0.4
   maxStamina: 100
   staminaDrain: 7
   staminaGain: 4
@@ -310,3 +318,34 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 1.8}
   m_Direction: 0
+--- !u!1 &5152297963455355512
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4131609272674026676}
+  m_Layer: 6
+  m_Name: WallCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4131609272674026676
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5152297963455355512}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.4, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1236998345238396352}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

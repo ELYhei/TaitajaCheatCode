@@ -13,6 +13,7 @@ namespace ELY.PlayerCore
         //[Header("Events")]
         public event EventHandler OnJump;
         public event EventHandler OnLand;
+        public event EventHandler OnWallJump;
         #endregion
 
         #region DEBUG & PROPERTIES
@@ -105,7 +106,7 @@ namespace ELY.PlayerCore
             }
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             if (!movementEnabled) return;
 
@@ -149,6 +150,7 @@ namespace ELY.PlayerCore
         {
             if (Physics2D.OverlapCircle(wallCheck.position, wallCheckRadius, wallLayer))
             {
+                OnWallJump?.Invoke(this, EventArgs.Empty);
                 StartCoroutine(PauseMovement());
                 rb.linearVelocity = Vector2.zero;
                 isRunning = false;
@@ -180,11 +182,11 @@ namespace ELY.PlayerCore
         {
             if (isRunning && isMoving)
             {
-                stamina -= staminaDrain * Time.deltaTime;
+                stamina -= staminaDrain * Time.fixedDeltaTime;
             }
             else if (stamina < maxStamina)
             {
-                stamina += staminaGain * Time.deltaTime;
+                stamina += staminaGain * Time.fixedDeltaTime;
             }
         }
         

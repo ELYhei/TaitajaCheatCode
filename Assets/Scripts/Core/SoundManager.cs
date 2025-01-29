@@ -18,6 +18,7 @@ namespace ELY.Core
             Step_Wood,
             Jump,
             Landing,
+            WallJump,
             // Add more sounds here
         }
         #endregion

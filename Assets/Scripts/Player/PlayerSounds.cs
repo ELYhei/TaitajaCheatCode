@@ -17,6 +17,12 @@ namespace ELY
 
             playerMovement.OnJump += PlayerMovement_OnJump;
             playerMovement.OnLand += PlayerMovement_OnLand;
+            playerMovement.OnWallJump += PlayerMovement_OnWallJump;
+        }
+
+        private void PlayerMovement_OnWallJump(object sender, System.EventArgs e)
+        {
+            SoundManager.PlaySound(SoundManager.Sound.WallJump);
         }
 
         private void PlayerMovement_OnLand(object sender, System.EventArgs e)
